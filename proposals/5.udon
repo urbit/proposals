@@ -1,6 +1,7 @@
 :-  :~  date/'~2018.7.28'
         title/'UP 5 - Asynchronous Multiprocessing'
         author/'~rovnys-ricfer'
+        preview/'An argument for asynchronous multiprocessing in Urbit.'
         type/'post'
     ==
 ;>

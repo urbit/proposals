@@ -1,6 +1,7 @@
 :-  :~  date/'~2017.12.19'
         title/'UP 3: Modular Front End Facilities For Eyre'
         author/'~ponmep-litsem'
+        preview/'Decoupling the front-end and client side session management from eyre'
         type/'post'
     ==
 ;>

@@ -1,6 +1,7 @@
 :-  :~  date/'~2017.10.19'
         title/'UP 1 - Ford Caching Redux'
         author/'~rovnys-ricfer'
+        preview/'Implement caching in the ford build system'
         type/'post'
     ==
 ;>

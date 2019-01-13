@@ -1,6 +1,7 @@
 :-  :~  date/'~2018.11.8..19.31.59..ba77'
         title/'UP 8 - Urbit HD Wallet'
         author/'~hadrud-lodsef'
+        preview/'The Urbit HD Wallet is a type-1 HD wallt of BIP32 type-2 HD wallets that uses public-key cryptography to secure the ownershp and control of Urbit addres space.
         type/'post'
     ==
 ;>
