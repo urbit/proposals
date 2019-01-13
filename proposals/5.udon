@@ -1,12 +1,9 @@
----
-type: post
-date: ~2018.7.28..19.57.33..7ed3
-title: UP 5 - Asynchronous Multiprocessing
-author: ~rovnys-ricfer
-navsort: bump
-navuptwo: true
-comments: reverse
----
+:-  :~  date/'~2018.7.28'
+        title/'UP 5 - Asynchronous Multiprocessing'
+        author/'~rovnys-ricfer'
+        type/'post'
+    ==
+;>
 
 # Urbit Parallelism Strategies
 

@@ -1,12 +1,9 @@
----
-type: post
-date: ~2018.11.8..19.31.59..ba77
-title: UP 8 - Urbit HD Wallet
-author: ~hadrud-lodsef
-navsort: bump
-navuptwo: true
-comments: reverse
----
+:-  :~  date/'~2018.11.8..19.31.59..ba77'
+        title/'UP 8 - Urbit HD Wallet'
+        author/'~hadrud-lodsef'
+        type/'post'
+    ==
+;>
 
 ```
   UP: 8
@@ -146,4 +143,3 @@ Optional string, used when turning generated BIP39 mnemonics into BIP32 seeds.
 Tlon has developed the [keygen-js library](https://github.com/urbit/keygen-js), which implements the above specification. This functionality will also exist in Arvo as a [library](https://github.com/urbit/arvo/pull/877).
 
 Tlon is currently developing a [Wallet Generator](https://github.com/urbit/urbit-wallet-generator), a browser-based application for the purpose of easily generating Urbit HD Wallets while offline. Wallet Generator uses the [keygen-js library](https://github.com/urbit/keygen-js). 
-

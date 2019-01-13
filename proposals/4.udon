@@ -1,12 +1,9 @@
----
-type: post
-date: ~2018.3.15..04.24.35..a47f
-title: UP 4 - Ford Turboencabulator
-author: ~rovnys-ricfer
-navsort: bump
-navuptwo: true
-comments: reverse
----
+:-  :~  date/'~2018.3.15'
+        title/'UP 4 - Ford Turboencabulator'
+        author/'~rovnys-ricfer'
+        type/'post'
+    ==
+;>
 
 ```
   UP: 4
@@ -22,9 +19,9 @@ comments: reverse
 
 Ford, Urbit's build system, needs love. Like many of Urbit's components, a beautiful vision has been partly realized. The difference between Ford's Platonic ideal and its current state could be considered the reason behind the slowness of the urbit.org website.
 
-While Ford is a functional reactive build system -- as we'll explore in more detail shortly -- its reactivity is both primitive and implicit. Lacking discernment, Ford often does a few hundred times too much work. This leads to slowness, which leads to sporadic 504 errors, which lead to questions on urbit-meta like "has anyone tried running Urbit on transistors? Right now it's clearly using vacuum tubes."
+While Ford is a functional reactive build system -- as we'll explore in more detail shortly -- its reactivity is both primitive and implicit. Lacking discernment, Ford often does a few hundred times too much work. This leads to slowness, which leads to sporadic 504 errors, which lead to questions on urbit-meta like "has anyone tried running Urbit on transistors? Right now it's clearly using vacuum tubes." 
 
-In modifying Ford, we hope to nudge it a small step closer to cryogenic perfection. This new design centers around formalizing the idea of a build:
+In modifying Ford, we hope to nudge it a small step closer to cryogenic perfection. This new design centers around formalizing the idea of a build: 
 
 A build is a function of the Urbit namespace and a date that produces marked, typed data or an error.
 
