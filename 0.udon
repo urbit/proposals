@@ -10,28 +10,41 @@
 
 ## Metadata
 
+
 ```
   UP: 0
   Title: Urbit Proposals
-  Authors: ~tonlur-sarret Keaton Dunsford <keaton@tlon.io> 
+  Authors: ~tonlur-sarret Keaton Dunsford <keaton@tlon.io>
            ~ravmel-ropdyl Galen Wolfe-Pauly <galen@tlon.io>
            ~rovnys-ricfer Ted Blackman <ted@tlon.io>
   Created: ~2017.10.18
 ```
 
+
 ## Overview
 
-Presently, there's no way for a new contributor to know what we're working on unless they happen to ask persistently in Talk and Fora or come to our office. This is ridiculous. We need a reliable, simple, straightforward system and place for new contributors to see what we're doing. 
+Presently, there's no way for a new contributor to know what we're working on
+unless they happen to ask persistently in Talk and Fora or come to our office.
+This is ridiculous. We need a reliable, simple, straightforward system and place
+for new contributors to see what we're doing.
 
-We propose Urbit Proposals (UPs): a format for proposing upgrades or improvements to Urbit that we hope is somewhere between a [PEP](https://www.python.org/dev/peps/) or [BIP](https://github.com/bitcoin/bips) and an [RFC](https://en.wikipedia.org/wiki/Request_for_Comments).
+We propose Urbit Proposals (UPs): a format for proposing upgrades or
+improvements to Urbit that we hope is somewhere between a
+[PEP](https://www.python.org/dev/peps/) or [BIP](https://github.com/bitcoin/bips)
+and an [RFC](https://en.wikipedia.org/wiki/Request_for_Comments).
 
-Urbit is young and there’s lots to do. Smaller units of work can be tracked with GitHub issues. We think more substantial projects -- some of which are still just ideas, many of which already exist in various concrete stages of development -- would better fit the simple structure of a UP.
+Urbit is young and there’s lots to do. Smaller units of work can be tracked with
+GitHub issues. We think more substantial projects -- some of which are still
+just ideas, many of which already exist in various concrete stages of
+development -- would better fit the simple structure of a UP.
 
 ## Specification
 
 ### What is a UP?
 
-An Urbit Proposal (UP) is a design document outlining the proposal of a new Urbit feature or general improvement to the Urbit system or our related processes.
+An Urbit Proposal (UP) is a design document outlining the proposal of a new
+Urbit feature or general improvement to the Urbit system or our related
+processes.
 
 UPs are just markdown files posted to Fora (see the *UP workflow* section below).
 
@@ -47,7 +60,8 @@ A good UP should have the following parts:
 
 #### Metadata
 
-UP _Metadata_ is just a markdown header with some structured data about the proposal in a code block. 
+UP _Metadata_ is just a markdown header with some structured data about the
+proposal in a code block.
 
 Metadata for a new UP could look like this:
 
@@ -57,7 +71,10 @@ Metadata for a new UP could look like this:
   Created: ~2017.12.22
 ```
 
-A newly submitted UP should include `Title`, `Author` and `Created` metadata. Try to keep your title succinct. Author can just be your urbit name (like `~tonlur-sarret`). You're free to add your full name, pseudonym or email. Multiple authors are welcome.
+A newly submitted UP should include `Title`, `Author` and `Created` metadata.
+Try to keep your title succinct. Author can just be your urbit name (like
+`~tonlur-sarret`). You're free to add your full name, pseudonym or email.
+Multiple authors are welcome.
 
 If your UP Requires (builds on top of) or Replaces (supersedes) another UP, that should be referenced in the metadata by that UP's number.
 
@@ -68,8 +85,8 @@ After submission your UP will be given a `Number` and `Status`.
 So, a complete metadata section after edits and review might look like this:
 
 
-````
 ## Metadata
+
 
 ```
   UP: 42
@@ -83,15 +100,14 @@ So, a complete metadata section after edits and review might look like this:
   Code: https://github.com/urbit/constitution
 ```
 
-````
 
 #### Overview
 
-A UP should have a short overview (~200 words) summarizing the specification of the improvement proposal, its motivation/rationale at a high level, and a short mention of the integration plan. 
+A UP should have a short overview (~200 words) summarizing the specification of the improvement proposal, its motivation/rationale at a high level, and a short mention of the integration plan.
 
 This doesn't have to be particularly detailed. Details should be left for the following three sections.
 
-#### Specification 
+#### Specification
 
 This section should lay out the detailed technical specification for the improvement proposal to Urbit. Be as detailed as possible. A fully-developed specification is one that can easily be used as a guide for writing code.
 
@@ -103,7 +119,7 @@ In many cases you may be proposing a feature that doesn’t exist. Why do we nee
 
 #### Integration Plan
 
-Lastly, a UP should include an Integration Plan section that proposes a plan of action to implement the proposal should it pass review. 
+Lastly, a UP should include an Integration Plan section that proposes a plan of action to implement the proposal should it pass review.
 
 Ideally, you can point to an already existing Git branch that can be cleanly merged. If you’re proposing breaking changes, please detail how you intend to integrate them. If your proposed change would require a continuity breach, please note that as well with a proposed plan of action.
 

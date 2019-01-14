@@ -195,25 +195,25 @@ algorithm described in the following section assumes we're rebuilding greedily.
 
 ### Cache Promotion
 
-In order to prevent Ford from unnecessarily re-running builds whose upstream dependencies haven't changed, we need to "promote" the cache from the previous 
+In order to prevent Ford from unnecessarily re-running builds whose upstream dependencies haven't changed, we need to "promote" the cache from the previous
 cached revision of the dependencies to the new revision. This is a somewhat delicate
 maneuver that we plan on doing using the following steps:
 
-1. The contents of a Clay path that Ford is subscribed to changes, and
++ The contents of a Clay path that Ford is subscribed to changes, and
   Clay sends Ford a message notifying us of the change to that path. The
   message includes the old revision and new revision of the path.
-2. Ford retrieves the latest version of the file from Clay.
-3. Ford looks up the dependencies of the changed file in its state and
++ Ford retrieves the latest version of the file from Clay.
++ Ford looks up the dependencies of the changed file in its state and
   rebuilds them.
-4. Ford recurses to rebuild the dependencies immediately downstream of the
++ Ford recurses to rebuild the dependencies immediately downstream of the
   last build, and checks whether all of that build's dependencies are the same
   as at the previous revision. If they are, it promotes the cached build from
   the previous revision to the new revision instead of re-running the build.
-5. This recursion continues until the final build steps (the most downstream)
++ This recursion continues until the final build steps (the most downstream)
   are re-run. We then push notifications to subscribers that a new version of
-  the build exists.\*
+  the build exists.
 
-\* We also have plans for a change to the Ford API so that we'll only have
+We also have plans for a change to the Ford API so that we'll only have
 to notify subscribers if the result of the build is different. Even without
 changing that, however, this should prevent us from running expensive
 unnecessary rebuilds.
