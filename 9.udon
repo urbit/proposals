@@ -6,7 +6,7 @@
     ==
 ;>
 
-# UP 8: Urbit HD Wallet
+# UP 9: Hoon School
 
 ## Overview
 
@@ -32,7 +32,7 @@ Hoon School is a six-week, asynchronous course that will teach students the basi
 
 Students and the instructor will correspond in two ways. The first is by asynchronous message board, and the second is by synchronous chat for scheduled office hours.
 
-There should be two sections of the message board: one where assignments are posted as new threads and student submissions are posted as replies; and the other that functions as general discussion board for students to communicate about the course material on.
+There should be two sections of the message board: one where assignments are posted as new threads and student submissions are posted as replies; and the other that functions as general discussion board for students to use to communicate about course material.
 
 The chat system is used for office hours. Students can ask questions from the instructor (and other Tlon employees) in a specified channel during such a time. The channel will always be active, but the instructor is guaranteed to be available during the office hours.
 
