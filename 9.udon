@@ -1,0 +1,77 @@
+:-  :~  date/'~2019.2.13'
+        title/'UP 9 - Hoon School'
+        author/'~poldec-tonteg and ~lodleb-ritrul'
+        preview/'A course of study that trains novice programmers to become Arvo contributors.'
+        type/'post'
+    ==
+;>
+
+# UP 8: Urbit HD Wallet
+
+## Overview
+
+A course of study in Hoon that trains novice programmers (in other languages) to become contributors to Arvo. This course of study should ideally use our own infrastructure, primarily Landscape.
+
+This will necessarily drive feature requests from the Landscape project. The focus of the effort, though, should be in developing and delivering the curriculum. This means improving the “Learn” section of the docs and making sure that the “Reference” sections key off of that.
+
+## Rationale
+
+In order to grow in the medium term, Urbit needs to both expand and consolidate; Hoon School serves both of these goals by increasing the number of contributors and the potential of any specific contributor.
+
+“Users” especially in a system as young as ours, are a potential cost, since they are a potential support liability. Tlon’s resources need to be focused on building urbit, not trying to support users who don’t understand the maturity of the system.
+
+The way we expand while incurring minimal support cost, is to make sure that we have as many contributors as possible. “Contributor” is defined as a user who can help build urbit, either by contributing code, helping debug, evangelizing or otherwise. A contributor’s fate is tied in some way to the project; a user’s is not.
+
+Hoon School can be thought of as a function that takes a user and turns it into a contributor.
+
+## Specification
+
+Hoon School is a six-week, asynchronous course that will teach students the basics of the Hoon programming language.
+
+### Communication
+
+Students and the instructor will correspond in two ways. The first is by asynchronous message board, and the second is by synchronous chat for scheduled office hours.
+
+There should be two sections of the message board: one where assignments are posted as new threads and student submissions are posted as replies; and the other that functions as general discussion board for students to communicate about the course material on.
+
+The chat system is used for office hours. Students can ask questions from the instructor (and other Tlon employees) in a specified channel during such a time. The channel will always be active, but the instructor is guaranteed to be available during the office hours.
+
+### Coursework
+
+A lesson from the Hoon Tutorial is assigned on a weekly basis along with an accompanying coding assignment for the first five weeks. On week six, an open-ended coding project is assigned instead.
+
+Each weekly assignment is worth 100 points. The final project is worth 200 points.
+
+### Lesson Schedule
+
+### Competency Goals
+
+By the completion of this course, students will be able to:
+
+- Read, understand, and comment on basic Hoon programs.
+- Understand the four types of generators.
+- Understand the fundamental concepts of subject-oriented programming.
+- Given a basic set of requirements, write a generator capable of accepting defined input and producing correct output.
+
+## Implementation
+
+_Milestone for 2/22:_
+
+- A final draft of the syllabus is complete.
+  - Every “maybe” (in-person meetups, screencasts, tracking) has become either a “yes” or a “no.”
+  - Syllabus should be informed by stated preference of interviewed students: schedule, learning style, incentives, timeline.
+  - Hoon competency goals are defined.
+- Class size-limit has been established.
+- Class start-date has been decided upon.
+
+_Milestone for 2/25:_
+
+Platforms are decided upon.
+
+_Milestone for 3/8:_
+
+Tutorial and Workbook are modified to be in service of Hoon School
+
+_Milestone for 3/11_
+
+The first Hoon School session begins.
