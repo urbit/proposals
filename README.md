@@ -2,11 +2,19 @@
 
 ## Status
 
+The proposal system is undergoing and overhaul and will be replaced soon.
+
 ## What is a UP?
 
 An Urbit Proposal (UP) is a design document outlining the proposal of a new Urbit feature or general improvement to the Urbit system or our related processes.
 
 UPs are udon files posted to https://github.com/urbit/proposals.
+
+## Motivation
+
+We often find ourselves organizing infrastructure projects among ourselves, but don’t have a process for communicating them to the outside world. In a way, UPs are just a post format for the core Urbit team to publicly communicate about what we’re building.
+
+There are also a fair number of large-scale projects that we have thought through, but don’t have the resources to build. So, it seemed like a good idea to formalize the process for writing up an urbit proposal. This way, we can organize a record of what needs to be worked on and focus our efforts.
 
 ## What belongs in a successful UP?
 
@@ -102,13 +110,3 @@ TBD
 ### UP review and progress
 
 TBD
-
-## Rationale
-
-We often find ourselves organizing infrastructure projects among ourselves, but don’t have a process for communicating them to the outside world. In a way, UPs are just a post format for the core Urbit team to publicly communicate about what we’re building.
-
-There are also a fair number of large-scale projects that we have thought through, but don’t have the resources to build. So, it seemed like a good idea to formalize the process for writing up an urbit proposal. This way, we can organize a record of what needs to be worked on and focus our efforts.
-
-## Integration Plan
-
-By posting this UP, UPs have been integrated. There are a number of features that could be built to support them, but we’ll leave that for future UPs.
