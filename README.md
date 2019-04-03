@@ -1,12 +1,14 @@
 # Urbit Proposals
 
-### What is a UP?
+## Status
+
+## What is a UP?
 
 An Urbit Proposal (UP) is a design document outlining the proposal of a new Urbit feature or general improvement to the Urbit system or our related processes.
 
 UPs are udon files posted to https://github.com/urbit/proposals.
 
-### What belongs in a successful UP?
+## What belongs in a successful UP?
 
 A good UP should have the following parts:
 
@@ -16,7 +18,7 @@ A good UP should have the following parts:
 - Rationale
 - Integration Plan
 
-#### Metadata
+### Metadata
 
 UP _Metadata_ is just a markdown header with some structured data about the proposal in a code block.
 
@@ -55,23 +57,23 @@ So, a complete metadata section after edits and review might look like this:
 
 ````
 
-#### Overview
+### Overview
 
 A UP should have a short overview (~200 words) summarizing the specification of the improvement proposal, its motivation/rationale at a high level, and a short mention of the integration plan.
 
 This doesn't have to be particularly detailed. Details should be left for the following three sections.
 
-#### Specification
+### Specification
 
 This section should lay out the detailed technical specification for the improvement proposal to Urbit. Be as detailed as possible. A fully-developed specification is one that can easily be used as a guide for writing code.
 
-#### Rationale
+### Rationale
 
 You may be tempted to assume that the rationale for your UP is self-evident. Pretend it isn’t and provide a plain-English description of why you think the change you’re proposing is needed.
 
 In many cases you may be proposing a feature that doesn’t exist. Why do we need it? What new affordance does it provide? How does it fit the spirit of the system?
 
-#### Integration Plan
+### Integration Plan
 
 Lastly, a UP should include an Integration Plan section that proposes a plan of action to implement the proposal should it pass review.
 
@@ -79,11 +81,11 @@ Ideally, you can point to an already existing Git branch that can be cleanly mer
 
 If your UP is simply a proposal for future work, outline how you think other contributors can productively integrate this proposal into the system.
 
-### UP Workflow
+## UP Workflow
 
 We want the UP submission to be easy with a low barrier to entry for new contributors. Really, the UP workflow is pretty simple:
 
-#### Start with an Idea for Urbit
+### Start with an Idea for Urbit
 
 The UP process begins with a new idea for Urbit. A single UP should contain a single key proposal or new idea. The more focused the UP, the better. If in doubt, start with informal discussion. Fora posts and Talk conversations are great places to get constructive feedback on an idea.
 
@@ -93,11 +95,11 @@ One simple way to think about it could be: if you sent a PR for the change you w
 
 In cases where you think your PR would be merged but would require a lot of development work, this could be a good opportunity to write a UP. UPs are intended to be a productive way to engage with other potential contributors and coordinate effort on larger undertakings.
 
-#### Submit a UP
+### Submit a UP
 
 TBD
 
-#### UP review and progress
+### UP review and progress
 
 TBD
 
