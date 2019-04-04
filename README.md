@@ -2,7 +2,7 @@
 
 ## Status
 
-The proposal system is undergoing and overhaul and will be replaced soon.
+The proposal system is undergoing an overhaul and will be replaced soon.
 
 ## What is a UP?
 
