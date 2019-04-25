@@ -1,28 +1,26 @@
-:-  :~  date/'~2018.3.15'
-        title/'UP 4 - Ford Turboencabulator'
-        author/'~rovnys-ricfer'
-        preview/'Ford Turbo is a complete redesign of the ford build system'
-        type/'post'
-    ==
-;>
++++
+title = "Ford Turboencabulator"
+created = 2018-3-15
+authors = [
+  "~rovnys-ricfer Ted Blackman <ted@tlon.io>",
+  "~littel-ponnys Elliot Glaysher <elliot@tlon.io>",
+  "~tonlur-sarret Keaton Dunsford <keaton@tlon.io>"
+]
+status = draft
+supercedes = 1
++++
 
-```
-  UP: 4
-  Title: Ford Turboencabulator
-  Authors: ~rovnys-ricfer Ted Blackman <ted@tlon.io>
-           ~littel-ponnys Elliot Glaysher <elliot@tlon.io>
-           ~tonlur-sarret Keaton Dunsford <keaton@tlon.io>
-  Created: ~2018.3.14
-  Supersedes: 1
-```
+# Summary 
 
-## Overview
+Ford Turbo is a complete redesign of the ford build system.
+
+# Overview
 
 Ford, Urbit's build system, needs love. Like many of Urbit's components, a beautiful vision has been partly realized. The difference between Ford's Platonic ideal and its current state could be considered the reason behind the slowness of the urbit.org website.
 
-While Ford is a functional reactive build system -- as we'll explore in more detail shortly -- its reactivity is both primitive and implicit. Lacking discernment, Ford often does a few hundred times too much work. This leads to slowness, which leads to sporadic 504 errors, which lead to questions on urbit-meta like "has anyone tried running Urbit on transistors? Right now it's clearly using vacuum tubes."
+While Ford is a functional reactive build system -- as we'll explore in more detail shortly -- its reactivity is both primitive and implicit. Lacking discernment, Ford often does a few hundred times too much work. This leads to slowness, which leads to sporadic 504 errors, which lead to questions on urbit-meta like "has anyone tried running Urbit on transistors? Right now it's clearly using vacuum tubes." 
 
-In modifying Ford, we hope to nudge it a small step closer to cryogenic perfection. This new design centers around formalizing the idea of a build:
+In modifying Ford, we hope to nudge it a small step closer to cryogenic perfection. This new design centers around formalizing the idea of a build: 
 
 A build is a function of the Urbit namespace and a date that produces marked, typed data or an error.
 
@@ -58,16 +56,16 @@ New Ford will generally cache the latest result of each live build. When a new v
 
 However, even though the cache should not grow indefinitely, it might still consume a lot of memory, so it's important for Ford to be able to respond to a request to trim its cache. New Ford includes a basic [LRU](https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)) cache reclamation scheme to provide this functionality.
 
-## Specification
+# Specification
 
-### Data Structures
+## Data Structures
 
 ```
 ::
 ::  sys/ford/hoon
 ::
 |%
-::
+::  
 ::  +axle: overall ford state
 ::
 +=  axle
@@ -337,7 +335,7 @@ However, even though the cache should not grow indefinitely, it might still cons
     ::
     $^  [head=schematic tail=schematic]
     ::
-    $%  ::  %$: literal value. Produces its input unchanged.
+    $%  ::  %$: literal value. Produces its input unchanged. 
         ::
         $:  %$
             ::  literal: the value to be produced by the build
@@ -479,7 +477,7 @@ However, even though the cache should not grow indefinitely, it might still cons
         ::
         $:  %slim
             ::  compile-time subject type for the :formula
-            ::
+            ::  
             subject-type=type
             ::  formula: a +hoon to be compiled to (pair type nock)
             ::
@@ -812,7 +810,7 @@ The `%wipe` task causes Ford to clear half its cached results. There is no ack f
 
 The `%wegh` task is a request from Arvo asking Ford to "weigh" its memory usage. Ford responds with a `%mass` gift.
 
-### Control Flow
+## Control Flow
 
 Ford's major construction entry points are:
 
@@ -825,38 +823,38 @@ All of these call `++execute`, the generic build/rebuild gate. The other major t
 - `++cancel`, which cancels a build and any sub-builds, and
 - `++reclaim-cache`, which trims stored build results to free memory.
 
-#### `++start-build`
+### `++start-build`
 
 1. Call `++execute` on the sample `+=build`.
 
-#### `++rebuild`
+### `++rebuild`
 
 - We hear from Clay about changed dependencies.
 - Store the dependency updates from Clay in `dependency-updates.ford-state`.
 - Look up in `live-leaf-builds.ford-state` to find the potentially affected builds.
 - Run `++execute` on each of those potentially affected leaf builds.
 
-#### `++unblock`
+### `++unblock`
 
 - We hear from Clay about unblocked dependencies.
 - We look up what builds are linked to those dependencies, in `blocked.ford-state`.
 - We run `++execute` on those builds.
 
-#### `++cancel`
+### `++cancel`
 
 - Look up `duct` in `builds-by-listener.ford-state` to find the build to cancel.
 - Remove the duct from the build.
 - Run `++cleanup` on the build.
 
-#### `++reclaim-cache`
+### `++reclaim-cache`
 
 Cache reclamation entails removing the results of builds from storage to free memory. This must be kept separate from dependency tracking, which is the domain of `++cleanup`. Iterate linearly through the `results.ford-state`, sorting by `last-accessed`. When we trim a `+=cached-result`, replace the `+=build-result` with a `+=tombstone` so we still know the build has been completed.
 
-#### Internal Logic
+### Internal Logic
 
 The function responsible for most of Ford's internal control flow is `++execute`, which traverses a graph of builds and dependencies, building as much as it can and staging side effects (moves) for later release. When it needs to run a build, it calls `++make`, which either performs the build or blocks. `++execute` handles all traversal from build to build, and `++make` handles the logic within a single `+=build`.
 
-##### `++execute`
+#### `++execute`
 
 `++execute` takes in a `+=build` as its sample, which is a `(pair @da schematic)`.
 
@@ -894,9 +892,9 @@ If the build that we just ran has clients in `components.ford-state`, recurse in
 
 If the build doesn't have clients, but the previous build is complete and has clients, then recurse into the old clients' schematics at the time of the new build.
 
-Then, check if there is a future build with the same schematic (the closest one to the current build's date). If there is, then call `++execute` on that (the reason for this is if the build we just completed is actually old, and there's another build that might also finish in this event. The trick here is making sure that when we queue up these `%made` moves, we need to queue them in the correct order, such that if we run `++execute` on the future build like we just ran `++execute` on this old build that just finished, that the `%made` events get sent in chronological order in that list of moves, because that's part of Ford's contract -- the `%made` moves for any given build are to be emitted in chronological order, and it can't miss any).
+Then, check if there is a future build with the same schematic (the closest one to the current build's date). If there is, then call `++execute` on that (the reason for this is if the build we just completed is actually old, and there's another build that might also finish in this event. The trick here is making sure that when we queue up these `%made` moves, we need to queue them in the correct order, such that if we run `++execute` on the future build like we just ran `++execute` on this old build that just finished, that the `%made` events get sent in chronological order in that list of moves, because that's part of Ford's contract -- the `%made` moves for any given build are to be emitted in chronological order, and it can't miss any).	
 
-##### `++make`
+#### `++make`
 
 `++make` takes in a `+=build` and produces either a result, or a set of things it blocked on -- either sub-builds or external dependencies. It also modifies the `ford-state` by linking the build and its sub-builds in `components.ford-state`.
 
@@ -936,7 +934,7 @@ To help show how `++make` works, we've included some pseudocode for the autocons
     ::
     =/  alts=(list schematic)  +.plan.b
     ?~  alts  [[%& `tang`"all options failed"] +>.$]
-    ::
+    ::  
     =^  first-result  +>.$  (depend-on i.alts b)
     ?~  first-result
       =/  blocks  (sy ~[%build date.b i.alts])
@@ -977,8 +975,8 @@ To help show how `++make` works, we've included some pseudocode for the autocons
   ?~  plans  |
   (~(has by u.plans) plan.b)
 ```
-
-##### `++subscribe-to-clay`
+ 
+#### `++subscribe-to-clay`
 
 At the end of an event during which we performed builds (fresh build, rebuild, or unblock), we need to update our subscriptions to Clay. This involves examining which builds finished and using that information to determine which Clay subscriptions need to be made and which Clay paths we care about.
 
@@ -986,10 +984,10 @@ For each live root build that completed during this event, grab the keys of its 
 
 Then, create one Clay request for each disk. To do this, for each disk, for each root build, look up the dependencies of the root build that are on this disk by recursively traversing sub-builds in `components.ford-state` and, for each sub-build, collecting its `(jug disk dependency)` if it exists in `dependencies.ford-state`. From those dependencies, we can create a set of `[care path]`s, which forms part of the Clay request. The beak in the Clay request is built from the disk and the time of the Clay file change, which we obtain from the time of any of the root builds that completed during this event (they should all be the same time).
 
-##### `++cleanup`
+#### `++cleanup`
 
 `++cleanup` takes in a `+=build` sample and produces the modified Ford state. It runs the following procedure:
-
+ 
 - Check if any client builds (in `components`), old builds (in `rebuilds`), or ducts (in `listeners`) depend on this build
 - If somebody cares about the build, then no-op and return
 - Otherwise, nobody cares about us. So delete the build in:
@@ -1021,7 +1019,7 @@ Then, create one Clay request for each disk. To do this, for each disk, for each
   - deletion-queue
 - Recurse on this build's kids
 
-## Rationale
+# Rationale
 
 This design errs heavily on the side of reducing rebuild times. We designed it to be able to handle a spreadsheet with thousands of rows and do the minimum amount of work to keep it up-to-date.
 
@@ -1031,7 +1029,7 @@ Because it has more cached checkpoints per build than previous Ford, it will gen
 
 We erred on the side of simplicity rather than performance with the cache reclamation algorithm, which performs the only full traversal of one of Ford's major data structures. Everything else uses a secondary index to avoid a traversal, but we expect cache reclamation to execute infrequently enough that we triaged designing a priority queue that also supports random access. If this assumption proves incorrect, it should be possible to improve the performance of reclamation without altering the rest of the design.
 
-## Integration plan
+# Integration plan
 
 We plan to test this into existence, schematic by schematic. Here's the sequence of schematics to test:
 
@@ -1041,7 +1039,7 @@ We plan to test this into existence, schematic by schematic. Here's the sequence
 - `%alts` fallback options
 - Namespace Accessors
   - `%scry` simplest namespace schematic: (sync, async) x (Clay, Gall)
-  - `%path` convert a Clay path from `/a-b-c` to `/a/b/c`; test async
+  - `%path` convert a Clay path from `/a-b-c` to `/a/b/c`; test async 
 - Hoon compilation and related tasks
   - `%reef` simplest compilation task: Hoon+Zuse kernel
   - `%slim` compile a hoon against a subject type
@@ -1102,9 +1100,9 @@ Here is some pseudocode to test bunting a mark:
   ::  ford should produce one move, immediately
   ::
   ?~  mow  (fail-test "%bunt should be synchronous")
-  ?^  t.mow  (fail-test "%bunt should only produce one move")
+  ?^  t.mow  (fail-test "%bunt should only produce one move") 
   ::  ford's move should contain a successful result: `0`
-  ::
+  ::  
   (expect-gift %f i.mow [%made date=now result=[%complete [%result [%bunt 0]]]])
 ```
 
