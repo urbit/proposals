@@ -65,8 +65,8 @@ requires = [
   "UP <number>"
   "UP <number>"
 ] 
-superceded-by = "UP <number>"
-supercedes = "UP <number>" 
+superseded-by = "UP <number>"
+supersedes = "UP <number>" 
 implementation = <link-to-implementation>
 comments = <link-to-comments>
 +++
@@ -127,7 +127,7 @@ When a UP has been implemented, a PR may be submitted to change the `status` to 
 
 ### Deprecated
 
-A UP that describes functionality or a process that has been removed, fallen out of use, or superceded by another UP may be marked "deprecated." If superceded, 
+A UP that describes functionality or a process that has been removed, fallen out of use, or superseded by another UP may be marked "deprecated." If superseded, 
 
 ### Deferred
 
