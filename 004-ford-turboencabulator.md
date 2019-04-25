@@ -7,7 +7,7 @@ authors = [
   "~tonlur-sarret Keaton Dunsford <keaton@tlon.io>"
 ]
 status = draft
-supercedes = 1
+supersedes = 1
 +++
 
 # Summary 

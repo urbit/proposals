@@ -8,7 +8,7 @@ authors = [
   ~pittyp-datfyn Anton Dyudin <anton@tlon.io>
 ]
 status = deprecated
-superceded-by = 4
+superseded-by = 4
 +++
 
 # Overview

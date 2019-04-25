@@ -7,7 +7,7 @@ authors = [
 ]
 status = deprecated 
 requires = 0
-superceded-by = 0
+superseded-by = 0
 +++
 
 # Summary
