@@ -127,7 +127,7 @@ When a UP has been implemented, a PR may be submitted to change the `status` to 
 
 ### Deprecated
 
-A UP that describes functionality or a process that has been removed, fallen out of use, or superseded by another UP may be marked "deprecated." If superseded, 
+A UP that describes functionality or a process that has been removed, fallen out of use, or superseded by another UP may be marked "deprecated." If superseded, the new UP should be referenced in the metadata.
 
 ### Deferred
 
