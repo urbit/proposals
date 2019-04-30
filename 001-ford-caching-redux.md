@@ -1,26 +1,19 @@
-:-  :~  date/'~2017.10.19'
-        title/'UP 1 - Ford Caching Redux'
-        author/'~rovnys-ricfer'
-        preview/'Implement caching in the ford build system'
-        type/'post'
-    ==
-;>
++++
+up = 1
+date = 2017-10-19
+title = "Ford Caching Redux"
+editor = "~rovnys-ricfer"
+authors = [
+  ~rovnys-ricfer Ted Blackman <ted@tlon.io>
+  ~pittyp-datfyn Anton Dyudin <anton@tlon.io>
+]
+status = deprecated
+superseded-by = 4
++++
 
-# UP 1 - Ford Caching Redux
+# Overview
 
-## Metadata
-
-```
-  UP: 1
-  Title: Ford Caching Redux
-  Authors: ~rovnys-ricfer Ted Blackman <ted@tlon.io>
-           ~pittyp-datfyn Anton Dyudin <anton@tlon.io>
-  Created: ~2017.10.18
-```
-
-## Overview
-
-### What Is Ford?
+## What Is Ford?
 
 [Ford](https://urbit.org/docs/arvo/internals/ford) is Urbit's functional
 reactive build system. It's one of the seven _vanes_ (kernel modules) inside
@@ -41,7 +34,7 @@ change. Ford is used in a variety of ways in Urbit, including the following:
 - The [Dojo](https://urbit.org/docs/using/shell) uses Ford to compile REPL expressions and interactive dialogs
 - [Clay](https://urbit.org/docs/arvo/internals/clay) uses Ford to verify that the contents of a file match its mark
 
-### What's Wrong with Ford?
+## What's Wrong with Ford?
 
 What's wrong with Ford is primarily that webpages served by Urbit tend to respond with 504 errors. There's a cascade of reasons for these errors, presented
 here from proximate to ultimate:
@@ -75,7 +68,7 @@ Problems:
 - Ford doesn't track intermediate builds and their dependencies
 - Ford doesn't have a real cache replacement algorithm
 
-## Specification and Rationale
+# Specification and Rationale
 
 We propose a solution involving the following changes to Ford:
 
@@ -83,7 +76,7 @@ We propose a solution involving the following changes to Ford:
 2. Have Ford greedily rebuild when a dependency changes, before notifying subscribers of the changed build
 3. Implement the "clock" cache replacement algorithm
 
-### Intermediate Dependency Tracking
+## Intermediate Dependency Tracking
 
 We need to change Ford's internal data structures to allow us to track
 intermediate dependencies.  In present-day Ford, the dependencies of a build
@@ -177,7 +170,7 @@ changing could trigger multiple rebuilds). `++na` operations ensure the `sup`
 and `sub` remain equivalent to each other. The `++add-sub:na` arm establishes
 that a dent `k` depends on `dez`, a set of dents.
 
-### Greedy Rebuilds
+## Greedy Rebuilds
 
 Present Ford will only rebuild when a client asks for a new build. We
 propose changing that so Ford will rebuild a build "greedily" whenever that
@@ -193,32 +186,32 @@ know).
 It's also easier to implement cache promotion using greedy rebuilds. The
 algorithm described in the following section assumes we're rebuilding greedily.
 
-### Cache Promotion
+## Cache Promotion
 
-In order to prevent Ford from unnecessarily re-running builds whose upstream dependencies haven't changed, we need to "promote" the cache from the previous
+In order to prevent Ford from unnecessarily re-running builds whose upstream dependencies haven't changed, we need to "promote" the cache from the previous 
 cached revision of the dependencies to the new revision. This is a somewhat delicate
 maneuver that we plan on doing using the following steps:
 
-+ The contents of a Clay path that Ford is subscribed to changes, and
+1. The contents of a Clay path that Ford is subscribed to changes, and
   Clay sends Ford a message notifying us of the change to that path. The
   message includes the old revision and new revision of the path.
-+ Ford retrieves the latest version of the file from Clay.
-+ Ford looks up the dependencies of the changed file in its state and
+2. Ford retrieves the latest version of the file from Clay.
+3. Ford looks up the dependencies of the changed file in its state and
   rebuilds them.
-+ Ford recurses to rebuild the dependencies immediately downstream of the
+4. Ford recurses to rebuild the dependencies immediately downstream of the
   last build, and checks whether all of that build's dependencies are the same
   as at the previous revision. If they are, it promotes the cached build from
   the previous revision to the new revision instead of re-running the build.
-+ This recursion continues until the final build steps (the most downstream)
+5. This recursion continues until the final build steps (the most downstream)
   are re-run. We then push notifications to subscribers that a new version of
-  the build exists.
+  the build exists.\*
 
-We also have plans for a change to the Ford API so that we'll only have
+\* We also have plans for a change to the Ford API so that we'll only have
 to notify subscribers if the result of the build is different. Even without
 changing that, however, this should prevent us from running expensive
 unnecessary rebuilds.
 
-### Cache Replacement
+## Cache Replacement
 
 We will implement the [clock cache replacement
 algorithm](https://en.wikipedia.org/wiki/Page_replacement_algorithm#Clock) for
@@ -241,7 +234,7 @@ in our cache, we'll run the following algorithm:
 Then, whenever we access a cached item, we set the "used" bit for its cache
 line. This preferentially stores cache lines who are accessed more frequently.
 
-#### Commentary
+### Commentary
 
 This is not perfect: some cache lines will take up significantly more memory
 than others, which means we won't have a firm upper bound on the amount of
@@ -249,9 +242,7 @@ memory used by the Ford cache. We do hope that in practice, we should be
 able to keep most build products cached while still maintaining a reasonable
 safety margin.
 
-
-
-## Integration Plan
+# Integration Plan
 
 This work can be fruitfully broken up into milestones:
 

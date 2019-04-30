@@ -1,16 +1,21 @@
-:-  :~  date/'~2018.7.28'
-        title/'UP 5 - Asynchronous Multiprocessing'
-        author/'~rovnys-ricfer'
-        preview/'An argument for asynchronous multiprocessing in Urbit.'
-        type/'post'
-    ==
-;>
++++
+up = 5
+title = "Asynchronous Multiprocessing"
+created = 2018-7-28
+authors = "~rovnys-ricfer Ted Blackman <ted@tlon.io>"
+editor = "~hidrel-fabtel Morgan Sutherland <morgan@tlon.io>"
+status = rfc
+++
 
-# Urbit Parallelism Strategies
+# Summary
+
+An argument for asynchronous multiprocessing in Urbit.
+
+# Abstract
 
 Urbit is single-threaded; it processes a single event at a time. This means that any long-running computation will block the event loop. A single-threaded Urbit cannot handle an HTTP request and a keystroke at the same time. It also keeps the majority of a typical computer’s processing capacity out of reach of a single Urbit, given the multiplicity of CPU and GPU cores on even small machines like cell phones. Various approaches to parallelism can be taken in Urbit for different applications. I believe asynchronous multiprocessing is the ideal approach for personal Urbit use, and I will provide a model that preserves event log determinism. First, let’s look at other parallelism strategies and what place they should have in the Urbiverse.
 
-## Distributed Computation
+# Distributed Computation
 
 The most obvious way to accomplish parallelism in Urbit is to run multiple Urbits and have them talk to each other using network messages. This is potentially appropriate for batch analysis workloads -- Urbit already ships with many of the features of Hadoop, and its networking and computation models could form a very solid foundation for distributed data processing.
 
@@ -18,7 +23,7 @@ It’s easy to picture a swarm of moons all running the same data-processing app
 
 The normal downsides of distributed computation apply, however: you now need to perform fleet management, deal with packet loss, and, importantly, serialize and deserialize every datum. This last task is important in Urbit, since as an OS, many of its common tasks involve compiling Hoon, and most Hoon programs contain a copy of the Hoon standard library, which is relatively large (what Ford calls the `%reef`). Taken as a whole, for common user-facing tasks, distributed computation is too heavyweight to be practical.
 
-## Multithreaded Map-Reduce
+# Multithreaded Map-Reduce
 
 Another relatively simple approach to parallelism is to implement a parallel version of `+turn`, which is Hoon’s function to map a function over a list. A `+parallel-turn` function could be added that has the same Hoon implementation as normal `+turn`, but whose jet uses a threadpool to parallelize the computation across threads. A parallel version of `+roll` (Hoon’s reduce) could similarly be added. The runtime would be responsible for spawning and reaping the threadpool as needed, managing memory, and marshalling the inputs and outputs of these functions.
 
@@ -32,7 +37,7 @@ The first failure mode is the problem with any cooperative multitasking model (e
 
 The second failure mode is that anything that it would be very difficult to implement a reasonable scheduling policy (see [Queueing Theory](https://en.wikipedia.org/wiki/Queueing_theory#Service_disciplines)). For example, a task consisting of a large number of small tasks will take much longer to run than if it were broken up into fewer, larger blocks.
 
-## Software Transactional Memory
+# Software Transactional Memory
 
 A more exotic approach to parallelism would take advantage of some of the unique properties of Urbit to implement a form of software transactional memory. The overall procedure would be that when event `e1` comes in, start processing it. Then when event `e2` is received, even though `e1` hasn’t completed yet, start running `e2` against the same subject against which we’re running `e1`. This is a form of speculative execution (always a great idea!), since if `e1` doesn’t cause mutation to any part of the subject accessed during the processing of `e2`, this second result will be valid. Otherwise, the second transaction will fail, and we’ll have to rerun `e2` using the result of `e1` as the subject.
 
@@ -50,7 +55,7 @@ Another issue with this approach is that many events cause mutations to vane sta
 
 Finally, even if we did implement this, it would impose eccentric incentives on data structure design, since we’d try to make mutations less likely to clobber each other. We’d end up doing things like replacing treaps (which we use for maps and sets) with data structures that store keys at predetermined indexes in the tree to prevent tree rotation from destroying our precious commutativity.
 
-## Asynchronous Multiprocessing
+# Asynchronous Multiprocessing
 
 As far as I can tell, our best hope for practical Urbit parallelism is asynchronous multiprocessing. Here’s what I mean:
 
