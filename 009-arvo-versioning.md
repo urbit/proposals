@@ -70,16 +70,19 @@ version schemes (Vere, for example, employs a major.minor.patch scheme).
 The Arvo kernel, on the other hand, is intended to freeze.  It follows a kelvin
 versioning scheme consisting of the following components:
 
-  Nock -> Hoon -> Arvo -> %zuse
+  Nock -> Hoon -> Arvo, %zuse
 
-That is: Nock supports Hoon, which supports Arvo, which supports %zuse.  Each
+That is: Nock supports Hoon, which supports Arvo proper and %zuse.  Each
 component in the stack is cooler -- i.e., has a lower kelvin -- than the one
-above it, or they are both at absolute zero.
+above it, or they are both at absolute zero.  Note that both Arvo proper and
+%zuse are considered to be a single component, versioned according to a single
+kelvin (the %zuse kelvin).
 
-%zuse contains the definitions of core abstractions used elsewhere in the
-kernel (i.e., in the vanes) -- these are the Arvo moves, $task and $gift.  It
-also encompasses the Arvo structural interface used by Nock runtimes.  As such,
-the %zuse kelvin effectively serves as a version for the whole-kernel API.
+%zuse contains the definitions of core abstractions used throughout the kernel
+(i.e., in the vanes), in particular -- these are the Arvo moves, $task and
+$gift.  It also encompasses the Arvo structural interface used by Nock
+runtimes.  As such, the %zuse kelvin effectively serves as a version for the
+whole-kernel API.
 
 Components running above the kernel are free at to adopt any versioning scheme
 they find appropriate.
