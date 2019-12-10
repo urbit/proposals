@@ -1,10 +1,10 @@
 # Urbit Proposals
 
-Urbit Proposals (UPs) are design documents proposing features, formalizing architectural decisions, protocols, and interfaces, and documenting processes for the Urbit project. 
+Urbit Proposals (UPs) are design documents proposing features, formalizing architectural decisions, protocols, and interfaces, and documenting processes for the Urbit project.
 
-# Process 
+# Process
 
-We suggest first having your UP reviewed as an RFC ("request for comment") on the urbit-dev mailing list <dev@urbit.org>. 
+We suggest first having your UP reviewed as an RFC ("request for comment") on the urbit-dev mailing list <dev@urbit.org>.
 
 1. Review [UP 0](000-purpose-and-guidelines.md) to understand the process.
 2. Draft a proposal, loosely following [the template](proposal-template.md).
@@ -21,14 +21,15 @@ If you have any questions, email <support@urbit.org>.
 - `~nidsut-tomdun` Jared Tobin <jared@tlon.io>
 - `~hidrel-fabtel` Morgan Sutherland <morgan@tlon.io>
 
-## Proposals 
+## Proposals
 
 UP                                                | Title                                    | Type          | Status     | Lead Author
 --------------------------------------------------|------------------------------------------|---------------|------------|-------------------
-[0](000-purpose-and-guidelines.md)                | Purpose and Guidelines                   | Process       | RFC        | Morgan Sutherland 
-[1](001-ford-caching-redux.md)                    | Ford Caching Redux                       | Architecture  | Deprecated | Ted Blackman      
-[2](002-integrating-urbit-proposals-github.md)    | Integrating Urbit Proposals with Github  | Process       | Deprecated | Matthew Levan 
-[3](003-modular-front-end-facilities-eyre.md)     | Modular Front-end Facilities for Eyre    | Feature       | Deprecated | `~ponmep-litesem` 
+[0](000-purpose-and-guidelines.md)                | Purpose and Guidelines                   | Process       | RFC        | Morgan Sutherland
+[1](001-ford-caching-redux.md)                    | Ford Caching Redux                       | Architecture  | Deprecated | Ted Blackman
+[2](002-integrating-urbit-proposals-github.md)    | Integrating Urbit Proposals with Github  | Process       | Deprecated | Matthew Levan
+[3](003-modular-front-end-facilities-eyre.md)     | Modular Front-end Facilities for Eyre    | Feature       | Deprecated | `~ponmep-litesem`
 [4](004-ford-turboencabulator.md)                 | Ford Turboencabulator                    | Architecture  | Draft      | Ted Blackman
 [5](005-asynchronous-multiprocessing.md)          | Asynchronous Multiprocessing             | Architecture  | RFC        | Ted Blackman
 [8](008-urbit-hd-wallet.md)                       | Urbit HD Wallet                          | Protocol      | Stable     | Will Kim
+[9](008-arvo-versioning.md)                       | Arvo Versioning                          | Protocol      | Stable     | `~nidsut-tomdun`
