@@ -32,4 +32,4 @@ UP                                                | Title                       
 [4](004-ford-turboencabulator.md)                 | Ford Turboencabulator                    | Architecture  | Draft      | Ted Blackman
 [5](005-asynchronous-multiprocessing.md)          | Asynchronous Multiprocessing             | Architecture  | RFC        | Ted Blackman
 [8](008-urbit-hd-wallet.md)                       | Urbit HD Wallet                          | Protocol      | Stable     | Will Kim
-[9](008-arvo-versioning.md)                       | Arvo Versioning                          | Protocol      | Draft      | `~nidsut-tomdun`
+[9](009-arvo-versioning.md)                       | Arvo Versioning                          | Protocol      | Draft      | `~nidsut-tomdun`
