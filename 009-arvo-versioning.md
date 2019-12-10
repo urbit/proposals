@@ -16,8 +16,8 @@ Arvo kernel.
 
 ## Specification
 
-Kelvin versioning was presented in the blog post "Toward a Frozen Operating
-System" [1][1].  It is designed to be a versioning system for components that
+Kelvin versioning was presented in the blog post ["Toward a Frozen Operating
+System"][1].  It is designed to be a versioning system for components that
 should eventually freeze (i.e., such that it becomes impossible to upgrade them
 any further).
 
@@ -61,12 +61,11 @@ forever, and C's version decreases in turn (from 8 to 7).
 Not all components of Urbit should eventually freeze, so there is a certain
 layer above which kelvin versioning is not a desirable versioning scheme.
 Consider userspace applications, etc. -- these are the so-called "fronds"
-described in [1][1].
+described in ["Towards A Frozen Operating System"][1].
 
-Similarly, Nock runtimes like Vere [2][2] and Jaque [3][3] are Unix
-applications, have Unix dependencies, and are better suited to adopt
-conventional Unix version schemes (Vere, for example, employs a
-major.minor.patch scheme).
+Similarly, Nock runtimes like [Vere][2] and [Jaque][3] are Unix applications,
+have Unix dependencies, and are better suited to adopt conventional Unix
+version schemes (Vere, for example, employs a major.minor.patch scheme).
 
 The Arvo kernel, on the other hand, is intended to freeze.  It follows a kelvin
 versioning scheme consisting of the following components:
@@ -84,10 +83,4 @@ the %zuse kelvin effectively serves as a version for the whole-kernel API.
 
 Components running above the kernel are free at to adopt any versioning scheme
 they find appropriate.
-
-## References
-
-[1]: https://urbit.org/blog/toward-a-frozen-operating-system/
-[2]: https://github.com/urbit/urbit/tree/master/pkg/urbit
-[3]: https://github.com/frodwith/jaque
 
