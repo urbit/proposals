@@ -42,19 +42,20 @@ but "kelvin versioning" should be interpreted as subsuming this characteristic.
 As an example, consider components A, B, and C such that A hosts B and B hosts
 C.  Let A have version 1, B have version 2, and C have version 10.
 
-Let a patch be made to component C.  Then the version (temperature) of C must
-decrease (cool), e.g. from 10 to 9.
+Let a kelvin-decreasing patch be made to component C.  Then the version
+(temperature) of C must decrease (cool), e.g. from 10 to 9.
 
-Note that B can't be patched, at present, as the version of B must be strictly
-larger than that of the component that hosts it, A.  A must decrement before B
-can decrement.
+Note that B can't be cooled further, at present, as the version of B must be
+strictly larger than that of the component that hosts it, A.  A must decrement
+before B can decrement further.
 
-Now let a patch be made to A.  A's version decreases to zero, and thus A
-becomes frozen forever.  As a result, B's version must also decrement (from 2
-to 1) and C's version must decrement in turn (e.g. from 9 to 8).
+Now let a kelvin-decreasing patch be made to A.  A's version decreases to zero,
+and thus A becomes frozen forever.  As a result, B's version must also
+decrement (from 2 to 1) and C's version must decrement in turn (e.g. from 9 to
+8).
 
-Finally, let a patch be made to B.  B's version decreases to zero, freezing it
-forever, and C's version decreases in turn (from 8 to 7).
+Finally, let a kelvin-decreasing patch be made to B.  B's version decreases to
+zero, freezing it forever, and C's version decreases in turn (from 8 to 7).
 
 ## Kelvin Versioning in Arvo
 
