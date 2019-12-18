@@ -88,3 +88,7 @@ whole-kernel API.
 Components running above the kernel are free at to adopt any versioning scheme
 they find appropriate.
 
+[1]: https://urbit.org/blog/toward-a-frozen-operating-system/
+[2]: https://github.com/urbit/urbit/tree/master/pkg/urbit
+[3]: https://github.com/frodwith/jaque
+
