@@ -19,7 +19,6 @@ If you have any questions, email <support@urbit.org>.
 ## Editors
 
 - `~nidsut-tomdun` Jared Tobin <jared@tlon.io>
-- `~hidrel-fabtel` Morgan Sutherland <morgan@tlon.io>
 
 ## Proposals
 
