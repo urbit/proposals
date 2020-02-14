@@ -3,7 +3,7 @@ up = 8
 title = "Urbit HD Wallet"
 created = 2018-11-8
 authors = [
-  "~poldec-tonteg Anthony Arroyo <anthony@tlon.io>", 
+  "~poldec-tonteg Anthony Arroyo <anthony@tlon.io>",
   "~hadrud-lodsef Will Kim <will@tlon.io>",
   "~hidrel-fabtel Morgan Sutherland <morgan@tlon.io>"
 ]
@@ -18,16 +18,16 @@ The Urbit HD Wallet is a type-1 HD wallet of BIP32 type-2 HD wallets that uses p
 
 The Urbit Hierarchical Deterministic (HD) Wallet is a type-1 HD wallet of [BIP32 type-2 HD wallets](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki) that uses public-key cryptography to secure the ownership and control of Urbit address space.
 
-The Urbit HD Wallet is not one key-pair, but a system of related key-pairs that each have distinct powers, from setting networking keys for communicating in the Urbit network to transferring ownership of your Urbit ship. 
+The Urbit HD Wallet is not one key-pair, but a system of related key-pairs that each have distinct powers, from setting networking keys for communicating in the Urbit network to transferring ownership of your Urbit ship.
 
 We use the Ethereum blockchain for the Urbit public-key infrastructure (PKI). If you are interested in reading about the motivation behind the decision to use Ethereum, see our [post](https://github.com/urbit/urbit.org/blob/master/main/blog/2017.9-eth.md) from 2017.9.
 
 
 ## Rationale
 
-Urbit address space is non-fungible and finite. Thus, in addition to its functional value, address space has financial value. Owners of address space need safeguards that allow for interacting on the Urbit network without jeopardizing cryptographic ownership of their assets. 
+Urbit address space is non-fungible and finite. Thus, in addition to its functional value, address space has financial value. Owners of address space need safeguards that allow for interacting on the Urbit network without jeopardizing cryptographic ownership of their assets.
 
-Toward this end, Ethereum addresses that own a particular ship can designate additional addresses as proxies for specific sets of functions. These functions include resetting networking keys, spawning child ships, voting on Urbit proposals, and so forth. 
+Toward this end, Ethereum addresses that own a particular ship can designate additional addresses as proxies for specific sets of functions. These functions include resetting networking keys, spawning child ships, voting on Urbit proposals, and so forth.
 
 The Urbit HD Wallet's derivation paths also have this hierarchical structure, so that keys with different powers can be physically separated. A "master ticket" can re-derive the entire wallet in case of loss. The encryption and authentication keys that Urbit ships use to sign messages within the network are also derived from the wallet.
 
@@ -118,7 +118,7 @@ Optional string, used when turning generated BIP39 mnemonics into BIP32 seeds.
       <li>For higher revision numbers, hash the "salted" BIP32 seed using SHA2-256d (hash with SHA2-256 twice)</li>
     </ul>
   </li>
-  <li>Optionally, for the type "network", derive encryption and authentication keys as follows (identical to `++pit:nu:crub:crypto` in Urbit's standard library, <a href="https://github.com/urbit/arvo/blob/master/sys/zuse.hoon">zuse</a>):
+  <li>Optionally, for the type "network", derive encryption and authentication keys as follows (identical to `++pit:nu:crub:crypto` in Urbit's standard library, <a href="https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/zuse.hoon">zuse</a>):
     <ul>
       <li>Hash the "network" seed using SHA2-512</li>
       <li>Take the first 256 bits of the result as the authentication private key</li>
@@ -132,6 +132,4 @@ Optional string, used when turning generated BIP39 mnemonics into BIP32 seeds.
 
 ### Integration Plan
 
-Tlon has developed the [keygen-js library](https://github.com/urbit/keygen-js), which implements the above specification. This functionality will also exist in Arvo as a [library](https://github.com/urbit/arvo/pull/877).
-
-Tlon is currently developing a [Wallet Generator](https://github.com/urbit/urbit-wallet-generator), a browser-based application for the purpose of easily generating Urbit HD Wallets while offline. Wallet Generator uses the [keygen-js library](https://github.com/urbit/keygen-js). 
+Tlon has developed the [urbit-key-generation library](https://www.npmjs.com/package/urbit-key-generation), which implements the above specification. This functionality also exists in Arvo as a [library](https://github.com/urbit/urbit/blob/master/pkg/arvo/lib/keygen.hoon).
