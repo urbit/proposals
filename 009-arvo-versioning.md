@@ -373,6 +373,12 @@ For an Arvo kernel K:
 * When a new release of K includes a new version of Zuse, the fractional
   temperature of **SHOULD** be reset to 9.
 
+In addition, the following stipulation is reserved for future use:
+
+* New versions of K **MAY** be indexed by kernel components other than Zuse.
+  However, this component **MUST** either be colder than Zuse, or be at version
+  0 conjointly with Zuse.
+
 ## Whole-Kernel Release Candidates
 
 The presence of any release candidate component makes the entire resulting
