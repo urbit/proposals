@@ -63,8 +63,10 @@ following a kelvin versioning scheme,
 
 * At version 0, new versions of A **MUST NOT** be released.
 
-* New releases of A **MUST** be assigned a new version, and this
-  version **MUST** be strictly less than the previous one.
+* A, at any particular version, **MUST NOT** be modified after release.
+
+* New releases of A **MUST** be assigned a new version, and this version
+  **MUST** be strictly less than the previous one.
 
 If A supports another component B that also follows a kelvin versioning scheme,
 then:
@@ -355,6 +357,8 @@ For an Arvo kernel K:
 
 * At Zuse version 0 and fractional temperature 0, new versions of K **MUST
   NOT** be released.
+
+* K, at any particular version, **MUST NOT** be modified after release.
 
 * New releases of K **MUST** be assigned a new version, and this version
   **MUST** be strictly less than the previous one.
