@@ -1,6 +1,6 @@
 # Urbit Proposals
 
-This repository is deprecated in favor of the new (UIPs)[https://github.com/urbit/UIPs] repository. 
+This repository is deprecated in favor of the new [UIPs](https://github.com/urbit/UIPs) repository. 
 
 Urbit Proposals (UPs) are design documents proposing features, formalizing
 architectural decisions, protocols, and interfaces, and documenting processes
